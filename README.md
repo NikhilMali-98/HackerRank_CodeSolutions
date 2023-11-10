@@ -1,1 +1,1 @@
-# HackerRank_CodeSolutions
+# HackerRank_1WeekPreaparationKit
