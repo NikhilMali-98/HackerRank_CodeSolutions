@@ -1,0 +1,71 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+        int queryCount = scanner.nextInt();
+        int count = 0;
+        
+        selfQueue myqueue = new selfQueue();
+
+        while(count < queryCount )
+        {
+            String query = scanner.next();
+             
+            char queryType = query.charAt(0);
+            if(queryType == '1')
+             {
+                 int data = scanner.nextInt();
+                 myqueue.enqueOperation(data);
+             }
+             
+             
+             if(queryType == '2')
+             {
+                 myqueue.dequeuOperation();
+             }
+             
+             if(queryType == '3')
+             {
+                 myqueue.print();
+             }
+           count++;   
+        }   
+    }
+}
+
+class selfQueue{
+    Stack<Integer> enque = new Stack<>();
+    Stack<Integer> deque = new Stack<>();
+    
+    void enqueOperation(int data)
+    {
+        if(deque.isEmpty())
+        {
+            deque.push(data);
+        }
+        else  enque.push(data);
+    }
+    
+    int dequeuOperation()
+    {
+        int ele = deque.pop();
+        if(deque.isEmpty())
+        {
+            while(! enque.isEmpty())
+            {
+                int data = enque.pop();
+                deque.push(data);
+            }
+        } return ele;
+    }
+    
+    void print()
+    {
+        System.out.println(deque.peek());
+    }
+}
+
