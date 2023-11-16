@@ -1,1 +1,1 @@
-# HackerRank_1WeekPreaparationKit
+# HackerRank
