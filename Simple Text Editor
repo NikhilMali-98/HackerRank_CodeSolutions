@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        
+        Scanner scanner = new Scanner(System.in);
+        int Q = scanner.nextInt();
+        StringBuilder sb = new StringBuilder();
+
+    ArrayDeque<String> stack = new ArrayDeque<>();
+
+    while (scanner.hasNext()) {
+        int ops = scanner.nextInt();
+
+        switch(ops) {
+            case 1:
+                // append
+                stack.push(sb.toString());
+                sb.append(scanner.next());
+                break;
+            case 2:
+                // delete
+                int numberOfChars = scanner.nextInt();
+                int start = sb.length() - numberOfChars;
+                int end = sb.length();
+
+                stack.push(sb.toString());
+                sb.delete(start, end);
+                break;
+            case 3:
+                // print
+                int index = scanner.nextInt();
+                char c = sb.charAt(index - 1);
+                System.out.println(c);
+                break;
+            case 4:
+                // undo
+                sb = new StringBuilder(stack.pop());
+                break;
+        }
+    }
+
+    scanner.close();
+
+    }
+}
